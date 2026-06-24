@@ -1,0 +1,63 @@
+/* Extra responsive polish */
+
+@media (max-width: 1100px) {
+    .navbar {
+        max-width: 100%;
+    }
+
+    .hero-content,
+    .container,
+    .cards,
+    .gallery,
+    .stats {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 21px;
+    }
+
+    .hero {
+        min-height: auto;
+        padding-bottom: 80px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .hero p,
+    .about p,
+    .cta p {
+        font-size: 16px;
+    }
+
+    .stat-box,
+    .card {
+        padding: 26px;
+    }
+
+    .placeholder {
+        height: 220px;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .about h2,
+    .services h2,
+    .projects h2,
+    .cta h2 {
+        font-size: 32px;
+    }
+
+    .stat-box h2 {
+        font-size: 32px;
+    }
+}/* Responsive */
