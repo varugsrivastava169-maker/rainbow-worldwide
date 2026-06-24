@@ -1,63 +1,550 @@
-/* Extra responsive polish */
+/*======================================================
+    RAINBOW WORLDWIDE
+    RESPONSIVE STYLES
+======================================================*/
 
-@media (max-width: 1100px) {
-    .navbar {
-        max-width: 100%;
-    }
+/* =====================================================
+   Large Laptops
+===================================================== */
 
-    .hero-content,
+@media (max-width: 1400px) {
+
     .container,
-    .cards,
-    .gallery,
-    .stats {
-        max-width: 95%;
+    .hero-content,
+    .navbar {
+        width: 92%;
     }
+
 }
 
-@media (max-width: 768px) {
-    .logo {
-        font-size: 21px;
+
+/* =====================================================
+   Laptop
+===================================================== */
+
+@media (max-width:1200px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .hero {
-        min-height: auto;
-        padding-bottom: 80px;
+    .gallery{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .subtitle {
-        font-size: 11px;
-        letter-spacing: 3px;
+    .portfolio-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .hero p,
-    .about p,
-    .cta p {
-        font-size: 16px;
+    .process-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .stat-box,
-    .card {
-        padding: 26px;
+    .stats{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .placeholder {
-        height: 220px;
+    .faq-grid{
+        grid-template-columns:1fr;
     }
+
 }
 
-@media (max-width: 420px) {
-    .hero h1 {
-        font-size: 38px;
+
+/* =====================================================
+   Tablet Landscape
+===================================================== */
+
+@media (max-width:991px){
+
+    .navbar{
+
+        padding:18px 0;
+
+        flex-wrap:wrap;
+
+        gap:20px;
+
     }
 
-    .about h2,
-    .services h2,
-    .projects h2,
-    .cta h2 {
-        font-size: 32px;
+    .nav-links{
+
+        width:100%;
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+        gap:20px;
+
     }
 
-    .stat-box h2 {
-        font-size: 32px;
+    .btn-nav{
+
+        display:none;
+
     }
-}/* Responsive */
+
+    .hero{
+
+        padding:160px 0 100px;
+
+        min-height:auto;
+
+    }
+
+    .hero-content{
+
+        width:92%;
+
+    }
+
+    .hero h1{
+
+        font-size:clamp(42px,8vw,68px);
+
+        letter-spacing:-2px;
+
+    }
+
+    .hero p{
+
+        font-size:17px;
+
+    }
+
+    .hero-buttons{
+
+        gap:16px;
+
+    }
+
+    .hero-trust{
+
+        gap:22px;
+
+    }
+
+    .hero-trust div{
+
+        border-right:none;
+
+        padding-right:0;
+
+    }
+
+    .about-grid{
+
+        grid-template-columns:1fr;
+
+        gap:60px;
+
+    }
+
+    .split-section{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .contact-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+        gap:40px;
+
+    }
+
+    .logo-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+/* =====================================================
+   Tablet Portrait
+===================================================== */
+
+@media (max-width:768px){
+
+    .section-padding{
+
+        padding:90px 20px;
+
+    }
+
+    .section-title{
+
+        font-size:42px;
+
+        letter-spacing:-1px;
+
+    }
+
+    .section-intro{
+
+        font-size:16px;
+
+        margin-bottom:45px;
+
+    }
+
+    .hero{
+
+        padding-top:150px;
+
+    }
+
+    .hero h1{
+
+        font-size:52px;
+
+        line-height:1.05;
+
+    }
+
+    .hero p{
+
+        font-size:16px;
+
+    }
+
+    .eyebrow,
+    .section-label{
+
+        font-size:11px;
+
+        letter-spacing:3px;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:260px;
+
+        justify-content:center;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+        margin-top:-40px;
+
+    }
+
+    .cards{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .gallery{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .portfolio-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .process-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .faq-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .logo-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .image-card img{
+
+        height:420px;
+
+    }
+
+    .card{
+
+        padding:30px;
+
+    }
+
+    .project-info{
+
+        padding:24px;
+
+    }
+
+    .contact-card,
+    .contact-form{
+
+        padding:30px;
+
+    }
+
+}
+
+
+/* =====================================================
+   Mobile
+===================================================== */
+
+@media (max-width:576px){
+
+    .navbar{
+
+        justify-content:center;
+
+        text-align:center;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .nav-links{
+
+        gap:14px;
+
+    }
+
+    .nav-links a{
+
+        font-size:14px;
+
+    }
+
+    .hero{
+
+        padding-top:140px;
+
+    }
+
+    .hero h1{
+
+        font-size:44px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    .hero-buttons{
+
+        width:100%;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        width:100%;
+
+    }
+
+    .hero-trust{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+    .hero-trust strong{
+
+        font-size:28px;
+
+    }
+
+    .section-title{
+
+        font-size:36px;
+
+    }
+
+    .about-text h2{
+
+        font-size:36px;
+
+    }
+
+    .stat-box{
+
+        padding:28px;
+
+    }
+
+    .stat-box h2{
+
+        font-size:36px;
+
+    }
+
+    .logo-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .logo-item{
+
+        height:110px;
+
+    }
+
+    .image-card img{
+
+        height:340px;
+
+    }
+
+    .cta h2{
+
+        font-size:38px;
+
+    }
+
+}
+
+
+/* =====================================================
+   Small Mobile
+===================================================== */
+
+@media (max-width:420px){
+
+    .hero{
+
+        padding-top:130px;
+
+    }
+
+    .hero h1{
+
+        font-size:38px;
+
+        letter-spacing:-1px;
+
+    }
+
+    .hero p{
+
+        font-size:15px;
+
+    }
+
+    .section-title{
+
+        font-size:30px;
+
+    }
+
+    .about-text h2{
+
+        font-size:30px;
+
+    }
+
+    .cta h2{
+
+        font-size:32px;
+
+    }
+
+    .card{
+
+        padding:24px;
+
+    }
+
+    .process-step{
+
+        padding:26px;
+
+    }
+
+    .faq-item{
+
+        padding:24px;
+
+    }
+
+    .contact-card,
+    .contact-form{
+
+        padding:24px;
+
+    }
+
+    .footer-grid{
+
+        gap:28px;
+
+    }
+
+}
+
+
+/* =====================================================
+   Ultra Small Devices
+===================================================== */
+
+@media (max-width:360px){
+
+    .hero h1{
+
+        font-size:34px;
+
+    }
+
+    .btn-primary,
+    .btn-secondary{
+
+        padding:14px 20px;
+
+    }
+
+    .logo{
+
+        font-size:20px;
+
+    }
+
+}
