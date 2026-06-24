@@ -936,3 +936,122 @@ footer a:hover {
 .form-group textarea::placeholder {
     color: var(--text-muted);
 }
+/*======================================================
+  TRUSTED BY
+======================================================*/
+
+.trusted{
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(56,189,248,.05),
+    transparent 28%),
+
+    var(--bg-deep);
+
+    position:relative;
+}
+
+.logo-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:24px;
+
+    margin-top:70px;
+}
+
+.logo-item{
+
+    height:130px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:
+
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,.07),
+    rgba(255,255,255,.03));
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.45s;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.logo-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+    135deg,
+    rgba(56,189,248,.08),
+    transparent);
+
+    opacity:0;
+
+    transition:.45s;
+}
+
+.logo-item:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(56,189,248,.35);
+
+    box-shadow:
+    0 25px 60px
+    rgba(0,0,0,.35);
+}
+
+.logo-item:hover::before{
+
+    opacity:1;
+}
+
+.logo-item img{
+
+    width:140px;
+
+    max-height:45px;
+
+    object-fit:contain;
+
+    filter:
+
+    grayscale(100%)
+
+    brightness(.85)
+
+    opacity(.55);
+
+    transition:.45s;
+}
+
+.logo-item:hover img{
+
+    filter:none;
+
+    opacity:1;
+
+    transform:scale(1.05);
+}
