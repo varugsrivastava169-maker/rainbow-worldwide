@@ -1,202 +1,116 @@
-// =======================================
-// Rainbow Worldwide
-// Main JavaScript
-// =======================================
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if (target) {
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-        }
-
-    });
-});
-
-
-// =======================================
-// Sticky Navigation
-// =======================================
-
-const header = document.querySelector("header");
+// Header scroll effect
+const header = document.querySelector(".site-header");
 
 window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 80) {
-
-        header.style.background = "rgba(7,11,18,0.97)";
-        header.style.boxShadow = "0 10px 35px rgba(0,0,0,.35)";
-
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
     } else {
-
-        header.style.background = "rgba(7,11,18,.88)";
-        header.style.boxShadow = "none";
-
+        header.classList.remove("scrolled");
     }
-
 });
 
+// Reveal animation on scroll
+const revealElements = document.querySelectorAll(
+    ".card, .project-card, .process-step, .stat-box, .image-card, .about-text, .contact-card, .contact-form, .section-title, .section-intro"
+);
 
-// =======================================
-// Fade In Sections
-// =======================================
-
-const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll(".card, .project, .stat-box, .about, .cta")
-    .forEach(el => observer.observe(el));
-
-
-// =======================================
-// Animated Counter
-// =======================================
-
-const counters = document.querySelectorAll(".stat-box h2");
-
-const speed = 200;
-
-counters.forEach(counter => {
-
-    const updateCounter = () => {
-
-        const target = counter.innerText.replace(/\D/g, "");
-
-        const count = +counter.getAttribute("data-count") || 0;
-
-        const increment = target / speed;
-
-        if (count < target) {
-
-            const next = Math.ceil(count + increment);
-
-            counter.setAttribute("data-count", next);
-
-            if (counter.innerText.includes("%")) {
-
-                counter.innerText = next + "%";
-
-            } else if (counter.innerText.includes("+")) {
-
-                counter.innerText = next + "+";
-
-            } else {
-
-                counter.innerText = next;
-
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
             }
+        });
+    },
+    { threshold: 0.15 }
+);
 
-            setTimeout(updateCounter, 10);
-
-        }
-
-    };
-
-    updateCounter();
-
+revealElements.forEach(element => {
+    element.classList.add("reveal");
+    observer.observe(element);
 });
 
+// Animated counters
+const counters = document.querySelectorAll(".stat-box h2");
+let counterStarted = false;
 
-// =======================================
-// Hero Button Animation
-// =======================================
+function startCounters() {
+    counters.forEach(counter => {
+        const originalText = counter.innerText;
+        const target = parseInt(originalText.replace(/\D/g, ""));
+        const suffix = originalText.replace(/[0-9]/g, "");
+        let current = 0;
+        const increment = Math.max(1, Math.floor(target / 90));
 
-document.querySelectorAll(".btn-primary, .btn-secondary").forEach(btn => {
+        const updateCounter = () => {
+            current += increment;
 
-    btn.addEventListener("mouseenter", () => {
+            if (current >= target) {
+                counter.innerText = target + suffix;
+            } else {
+                counter.innerText = current + suffix;
+                requestAnimationFrame(updateCounter);
+            }
+        };
 
-        btn.style.transform = "translateY(-5px)";
+        updateCounter();
+    });
+}
 
+const statsSection = document.querySelector(".stats");
+
+if (statsSection) {
+    const statsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !counterStarted) {
+                counterStarted = true;
+                startCounters();
+            }
+        });
     });
 
-    btn.addEventListener("mouseleave", () => {
+    statsObserver.observe(statsSection);
+}
 
-        btn.style.transform = "translateY(0)";
+// Mouse glow position on cards
+const glowCards = document.querySelectorAll(".card, .project-card, .process-step, .stat-box");
 
+glowCards.forEach(card => {
+    card.addEventListener("mousemove", event => {
+        const rect = card.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        card.style.setProperty("--x", `${x}px`);
+        card.style.setProperty("--y", `${y}px`);
+    });
+});
+
+// Subtle parallax hero movement
+const hero = document.querySelector(".hero");
+
+if (hero) {
+    window.addEventListener("mousemove", event => {
+        const moveX = (event.clientX / window.innerWidth - 0.5) * 12;
+        const moveY = (event.clientY / window.innerHeight - 0.5) * 12;
+
+        hero.style.backgroundPosition = `calc(50% + ${moveX}px) calc(50% + ${moveY}px)`;
+    });
+}
+
+// Magnetic button effect
+const buttons = document.querySelectorAll(".btn-primary, .btn-secondary, .btn-nav");
+
+buttons.forEach(button => {
+    button.addEventListener("mousemove", event => {
+        const rect = button.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+
+        button.style.transform = `translate(${x * 0.12}px, ${y * 0.12}px) translateY(-4px)`;
     });
 
-});
-
-
-// =======================================
-// Scroll To Top Button (optional)
-// =======================================
-
-const topButton = document.createElement("button");
-
-topButton.innerHTML = "↑";
-
-topButton.id = "topButton";
-
-document.body.appendChild(topButton);
-
-topButton.style.cssText = `
-position:fixed;
-bottom:30px;
-right:30px;
-width:50px;
-height:50px;
-border:none;
-border-radius:50%;
-background:#38bdf8;
-color:white;
-font-size:22px;
-cursor:pointer;
-display:none;
-z-index:999;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-transition:.3s;
-`;
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 500) {
-
-        topButton.style.display = "block";
-
-    } else {
-
-        topButton.style.display = "none";
-
-    }
-
-});
-
-topButton.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "";
     });
-
 });
-
-
-// =======================================
-// Console Message
-// =======================================
-
-console.log("Rainbow Worldwide Website Loaded Successfully");
